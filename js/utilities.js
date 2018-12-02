@@ -171,7 +171,38 @@ function hideCreditsPage(e){
         $('#credits').addClass('switchon');
         $('#credits').html('Credits');
     });
+}
+
+//////////// AUDIO ///////////////
+
+var muted = false;
+
+function audioLoad(){
+    var backAudio = $('#background_audio');
+    backAudio.animate({volume: 0.5}, 1000);
 
     
 
+    $('#mute').on("click", function(){
+        var button = $(this);
+        if (!muted) {
+            button.attr("disabled", "");
+            
+            backAudio.animate({volume: 0}, 1000, function(){
+                muted = true;
+                button.removeAttr("disabled", "");
+                button.html("<i class='fas fa-volume-mute'>");
+            });
+        }
+        else {
+            button.attr("disabled", "");
+            
+            backAudio.animate({volume: 0.5}, 1000, function(){
+                muted = false;
+                button.removeAttr("disabled", "");
+                button.html("<i class='fas fa-volume-up'>");
+            });
+        }
+    });
 }
+/////////////////////////////////////////

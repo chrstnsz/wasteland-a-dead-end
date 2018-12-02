@@ -20,7 +20,7 @@
 <main class="container">
 
 	<section id="picture_target">
-		<img src="img/2.jpg" alt="lalala">
+		<img src="img/wasteland.jpg" alt="wasteland">
 	</section>
 
 	<section id="scene_target">
@@ -42,7 +42,7 @@
 	</div>
 	<footer>
 		<small>
-			<p>Meh</p>
+			<p>From the book "Freeway Fighter" of Ian Livingstone.</p>
 		</small>
 	</footer>
 </main>

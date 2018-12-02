@@ -1,12 +1,15 @@
 function onClickFirstScene(){
 
     $('#run').remove();
-    $('#background_audio').attr("src", "audio/darkbeast.ogg");
+
+    $('#background_audio').animate({volume: 0}, 500, function(){
+        $('#background_audio').attr("src", "audio/darkbeast.ogg");
         if (window.muted) {
             return;
         } else {
-            $('#background_audio').animate({volume: 0.5});
+            $('#background_audio').animate({volume: 0.5}, 1000);
         }
+    });
 
     $('form').css('height', '128px');
 

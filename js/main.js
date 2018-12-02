@@ -1,34 +1,7 @@
 "use strict";
 $(document).ready(function(){
-	
-//////////// AUDIO ///////////////
-    var backAudio = $('#background_audio');
-    backAudio.animate({volume: 0.5}, 1000);
-
-    var muted = false;
-
-    $('#mute').on("click", function(){
-        var button = $(this);
-        if (!muted) {
-            button.attr("disabled", "");
-            
-            backAudio.animate({volume: 0}, 1000, function(){
-                muted = true;
-                button.removeAttr("disabled", "");
-                button.html("<i class='fas fa-volume-mute'>");
-            });
-        }
-        else {
-            button.attr("disabled", "");
-            
-            backAudio.animate({volume: 0.5}, 1000, function(){
-                muted = false;
-                button.removeAttr("disabled", "");
-                button.html("<i class='fas fa-volume-up'>");
-            });
-        }
-    });
-/////////////////////////////////////////
+	//call audio function
+	audioLoad();
 
 /////// BUTTON START GAME AT THE END OF THE INTRO //////////
 // on click > first story scene
