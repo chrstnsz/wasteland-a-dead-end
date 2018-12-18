@@ -2,6 +2,7 @@
 function hideFadeSkipNext(nextBtnId, nextBtnSelector, nextIntroFunction, lastSliderImg, lastImgAlt){
      
     if ($(window).width() > 480){
+
            //create the skip intro button in skip intro target section
         $('#skip_intro_target').hide().delay(500).fadeIn().append('<button type="submit" class="btn" id="run">Skip Intro</button>');
         //button skip appear
@@ -9,9 +10,10 @@ function hideFadeSkipNext(nextBtnId, nextBtnSelector, nextIntroFunction, lastSli
         $('.a').css("visibility", "visible");
         $('#choices_target').hide().delay(500).fadeIn().html('<button type="submit" class="a btn" id="skip">Skip</button>');
 
+        //fadeIn texts
         $('#intro_text1').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0},1000);
 
-        //fadeIn texts
+      
         $('#intro_text2').delay(7000).css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0},1000);
         $('#intro_text3').delay(14000).css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0},1000);
         $('#intro_text4').delay(21000).css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0},1000, function(){
@@ -128,7 +130,7 @@ function emptyHtmlTargets(){
 function onClickHomePage(e){
     e.preventDefault();
     $('#background_audio').animate({volume: 0}, 2000);
-    $('body').fadeOut(3000, function() {
+    $('body').fadeOut(2000, function() {
         location.reload();
     });
     
