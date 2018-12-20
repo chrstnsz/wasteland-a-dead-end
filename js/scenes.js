@@ -10,7 +10,7 @@ function onClickFirstScene(){
             $('#background_audio').animate({volume: 0.5}, 1000);
         }
     });
-    
+
     $('form').css('height', '128px');
 
     $.ajax({
@@ -46,7 +46,7 @@ function onClickNextScene(e){
     
     //verif if radiochoice is a number and positive and not decimal
     if(isNaN(radioChoice) || radioChoice < 1 || test === true){
-        location.reload();
+        location.reload(true);
     }else{
 
         $.ajax({

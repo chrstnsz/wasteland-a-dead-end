@@ -131,7 +131,7 @@ function onClickHomePage(e){
     e.preventDefault();
     $('#background_audio').animate({volume: 0}, 2000);
     $('body').fadeOut(2000, function() {
-        location.reload();
+        location.reload(true);
     });
     
 }

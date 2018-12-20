@@ -1,8 +1,10 @@
 "use strict";
 $(document).ready(function(){
+
+
 	//call audio function
 	audioLoad();
-
+	$("#background_audio").get(0).play();
 /////// BUTTON START GAME AT THE END OF THE INTRO //////////
 // on click > first story scene
     $('#choices_target').on("click", '#run', onClickFirstScene);
@@ -10,7 +12,6 @@ $(document).ready(function(){
 /////// BUTTON SKIP INTRO ////////
     $('#skip_intro_target').on("click", '#run', function(e){
     	e.preventDefault();
-    	// $('#background_audio').animate({volume: 0});
     		onClickFirstScene();   	
     });
     

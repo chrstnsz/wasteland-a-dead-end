@@ -115,24 +115,9 @@ footer {
  text-align: center;
 }
 
-@media screen and (max-height:760px){
+/*@media screen and (max-height:760px) and (min-width: 700px){
 
-  .btn {
-  position: absolute;
-  bottom: 10px;
-  background-color: black;
-  color: white;
-  padding: 10px 25px;
-  border: 0;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  cursor:pointer;
-  }
-
-  #credits {
-  left: 150px;
-  }
-}
+}*/
 
 @media screen and (max-width: 700px){
 
@@ -142,6 +127,26 @@ footer {
   #scene_target{
     border: none;
   }
-
+  footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  }
 }
 
+@media screen and (max-height: 600px) and (max-width: 450px){
+  #credits{
+    position: fixed;
+    bottom: 40px;
+    left: 135px;
+    right: 0;
+  }
+  #start_intro{
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+  }
+
+}
