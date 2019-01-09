@@ -28,13 +28,4 @@
 					<li><a href="https://www.deviantart.com/selkys/art/Never-leave-the-trail-625604898" target="_blank" rel="noopener">Selkys / DeviantArt</a></li>				
 				</ul>
 		</article>
-		<article>
-			<h3>Audio</h3>
-				<ul>
-					<li>Ludwig, the Holy Blade from the Bloodborne DLC OST, The Old Hunters</li>
-					<li>Lullaby for Mergo from Bloodborne OST</li>
-					<li>Moonlit Melody from Bloodborne OST</li>
-					<li>Darkbeast from Bloodborne OST</li>
-				</ul>
-		</article>
 </section>
