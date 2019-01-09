@@ -1,9 +1,6 @@
 "use strict";
 $(document).ready(function(){
 
-
-	//call audio function
-	audioLoad();
 /////// BUTTON START GAME AT THE END OF THE INTRO //////////
 // on click > first story scene
     $('#choices_target').on("click", '#run', onClickFirstScene);
@@ -26,15 +23,7 @@ $(document).ready(function(){
 
 ////// FIRST BUTTON START GAME  IN BTN BAR HOMEPAGE////
     $('#start_intro').on("click", function(e){
-    	e.preventDefault();
- 
-	    	$('#background_audio').animate({volume: 0}, 1000, function(){
-		        $('#background_audio').attr("src", "audio/ludwig-the-holy-blade.ogg");
-		        if (!muted) {
-		        	$('#background_audio').animate({volume: 0.5}, 1000);
-		        }
-    		});
-   
+    	e.preventDefault();   
     	$('#btn_bar').empty();
 	    $('#choices_target').empty();
 	    $('footer').hide();

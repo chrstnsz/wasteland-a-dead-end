@@ -2,15 +2,6 @@ function onClickFirstScene(){
 
     $('#run').remove();
 
-    $('#background_audio').animate({volume: 0}, 500, function(){
-        $('#background_audio').attr("src", "audio/darkbeast.ogg");
-        if (window.muted) {
-            return;
-        } else {
-            $('#background_audio').animate({volume: 0.5}, 1000);
-        }
-    });
-
     $('form').css('height', '128px');
 
     $.ajax({
@@ -71,15 +62,6 @@ function onClickNextScene(e){
                         $('#choices_target').append("<button type='submit' id='homepage' class='btn'>Menu Principal</button>").show();
 
                     }else if(data.a == 100 || data.a == 209 || data.a == 666){
-
-                        $('#background_audio').animate({volume: 0}, 500, function(){
-                            $('#background_audio').attr("src", "audio/lullaby-for-mergo.ogg");
-                            if (window.muted) {
-                                return;
-                            } else {
-                                $('#background_audio').animate({volume: 0.5}, 1000);
-                            }
-                        });
 
                         $('#choices_target').empty();
                         //button id="nextscene"
