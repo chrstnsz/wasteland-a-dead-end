@@ -9,7 +9,7 @@ if(!empty($_POST)){
 	$errors = array();
 
 
-	if(empty($_POST['pseudo']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo']) || strlen($_POST['pseudo']) > 12)){
+	if(empty($_POST['pseudo']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['pseudo']) || strlen($_POST['pseudo']) > 12){
 		$errors['pseudo'] = "Votre pseudo n'est pas valide.";
 
 	} else {
