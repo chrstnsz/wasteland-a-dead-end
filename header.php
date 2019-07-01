@@ -1,0 +1,95 @@
+<?php if(session_status() == PHP_SESSION_NONE){
+	session_start();
+}
+// log out after 30 minutes of session inactivity
+if (isset($_SESSION['LAST_ACTIVITY']) && ((time() - $_SESSION['LAST_ACTIVITY']) > 1800)) {
+    session_unset();
+    session_destroy();
+    $_SESSION['flash']['danger'] = 'Vous êtes inactif depuis trop longtemps. Nous vous avons déconnecté.';
+}
+
+$_SESSION['LAST_ACTIVITY'] = time();
+
+?>
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Wasteland, a Dead End</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="https://fonts.googleapis.com/css?family=Oswald%7cSlabo+27px" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Share&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<link rel="icon" type="image/png" href="favicon.png"/>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/game_utilities.js"></script>
+	<script src="js/website_utilities.js"></script>
+	<script src="js/scenes.js"></script>
+	<script src="js/intro.js"></script>
+</head>
+<body>
+<div id="overflow">
+<main class="container">
+
+	<section id="picture_target">
+		<img src="img/wasteland.jpg" alt="wasteland">
+	</section>
+<?php if(isset($_SESSION['perso'])) : ?>
+<section id="perso_infos">
+	<table>
+		<thead>
+			<tr>
+				<th>Pseudo</th>
+				<th>Hability</th>
+				<th>Endurance</th>
+				<th>Chance</th>
+				<th>First Aid</th>
+				<th>Credits</th>
+				<th>Score</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?= htmlspecialchars($_SESSION['perso']->pseudo); ?></td>
+				<td><?= htmlspecialchars($_SESSION['perso']->hability); ?></td>
+				<td><?= htmlspecialchars($_SESSION['perso']->endurance); ?></td>
+				<td><?= htmlspecialchars($_SESSION['perso']->luck); ?></td>
+				<td><?= htmlspecialchars($_SESSION['backpack']->first_aid_kit); ?></td>
+				<td><?= htmlspecialchars($_SESSION['backpack']->credits); ?></td>
+				<td><span id="clicks_count">0</span></td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+<?php endif; ?>
+	<section id="scene_target">
+		<h1>Wasteland Story : A Dead End.</h1>
+	</section>
+	<ul id="nav_bar">
+		<?php if(isset($_SESSION['auth'])): ?>
+			<li><a class="nava_style" href="php/logout.php">Logout</a></li>
+			<li><a class="nava_style" href="scoreList.php#scoreList">Classement</a></li>
+			<li><a class="nava_style" href="index.php">Accueil</a></li>
+		<?php else: ?>
+			<li><a class="nava_style" href="register.php#register_form">Create new account</a></li>
+			<li><a class="nava_style" href="login.php#login_form">Login</a></li>
+		<?php endif ?>
+		<li><a class="nava_style" href="credits.php#credits_page">Credits</a></li>
+		<li><a class="nava_style" href="faq.php#faq">FAQ</a></li>
+	</ul>
+	<div style="position: absolute; left: 50%;">
+	<?php if(isset($_SESSION['flash'])): ?>
+		<?php foreach($_SESSION['flash'] as $type => $message): ?>
+			<div id="log_notif" class="<?= $type; ?>">
+				<?= htmlspecialchars($message); ?>
+			</div>
+		<?php endforeach; ?>
+		<?php unset($_SESSION['flash']); ?>
+	<?php endif; ?>
+	</div>
+

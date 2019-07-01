@@ -1,0 +1,493 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+}
+body, html, #overflow {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Lato', serif;
+  color: #383838;
+}
+h1 {
+  font-family: 'Oswald', sans-serif;
+  color: black;
+}
+h2 {
+  font-family: 'Share', sans-serif;
+  text-align: center;
+}
+h3 {
+  font-family: 'Share', sans-serif;
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+button:disabled:hover,
+button[disabled]:hover{
+  background-color: #cccccc;
+}
+
+table,
+td {
+    border: 1px solid #333;
+}
+tr {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+input {
+  border-radius: 5px;
+}
+a {
+  color: inherit;
+} 
+a:visited {
+  color: black;
+}
+a:hover {
+  background-size: 4px 50px;
+  color: black;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.hidden {
+  display: none;
+}
+.introText {
+  font-style: italic;
+}
+.italic {
+  font-style: italic;
+}
+.bold {
+  font-weight: bold;
+}
+.success {
+  background: #86d88a;
+}
+.danger {
+  border: 1px solid black;
+  color: white;
+  background: red;
+  padding: 15px;
+}
+.nava_style {
+  background:
+     linear-gradient(
+       to bottom, #ff9800 0%,
+       #ff9800 100%
+     );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 4px 4px;
+  text-decoration: none;
+  transition: background-size .2s;
+}
+.bounceIn:hover {
+  -webkit-animation-name: rubberBand;
+  animation-name: rubberBand;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes rubberBand {
+  0% {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  }
+  30% {
+  -webkit-transform: scale3d(1.25, 0.75, 1);
+  transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+  -webkit-transform: scale3d(0.75, 1.25, 1);
+  transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+  -webkit-transform: scale3d(1.15, 0.85, 1);
+  transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+  -webkit-transform: scale3d(.95, 1.05, 1);
+  transform: scale3d(.95, 1.05, 1);
+  }
+  75% {
+  -webkit-transform: scale3d(1.05, .95, 1);
+  transform: scale3d(1.05, .95, 1);
+  }
+  100% {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  }
+  }
+  @keyframes rubberBand {
+  0% {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  }
+  30% {
+  -webkit-transform: scale3d(1.25, 0.75, 1);
+  transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+  -webkit-transform: scale3d(0.75, 1.25, 1);
+  transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+  -webkit-transform: scale3d(1.15, 0.85, 1);
+  transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+  -webkit-transform: scale3d(.95, 1.05, 1);
+  transform: scale3d(.95, 1.05, 1);
+  }
+  75% {
+  -webkit-transform: scale3d(1.05, .95, 1);
+  transform: scale3d(1.05, .95, 1);
+  }
+  100% {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  }
+} 
+.btn {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 10px 25px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  cursor:pointer;
+  border-radius: 5px;
+}
+.btn:hover {
+  background-color: #ff9800;
+  border: 1px solid black;
+  color: black;
+}
+
+/***** NAV *****/
+#nav_bar{
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding-bottom: 12px;
+}
+#nav_bar, #nav_bar li{
+  list-style: none;
+  display: inline-block;
+}
+#nav_bar a {
+  font-family: 'Oswald', sans-serif;
+  background-color: black;
+  padding: 10px 8px;
+  color: white;
+  text-transform: uppercase;
+}
+
+/***** FLASH MESSAGE *****/
+#log_notif {
+  position: relative;
+  left: -50%;
+  padding: 15px;
+  border: 1px solid black;
+}
+
+/**** accueil *****/
+#accueil, #faq {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/***** SIDE BAR *****/
+#sidebutton {
+  font-size: 1.5em;
+  position: absolute;
+  left: -35px;
+  top: 35px;
+  background-color: #ffb90b;
+  border-radius: 5px;
+  border-color: #ffb90b;
+  cursor: pointer;
+}
+#sidebar {
+  display: none;
+  width: 200px;
+  position: absolute;
+  right: -189px;
+  top: 110px;
+}
+#sidebar_infos {
+  border: 2px solid black;
+  background-color: #ffffff;
+  list-style: none;
+  border-radius: 15px;
+}
+#sidebar_infos ul {
+  list-style: none;
+}
+
+/***** PERSO INFO SECTION *****/
+#perso_infos{
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  background-color: black;
+  padding-bottom: 15px;
+  text-align: center;
+}
+#perso_infos th {
+  font-weight: normal;
+  background-color: 
+}
+#perso_infos th, #perso_infos table td {
+  border: 1px solid white;
+}
+#perso_infos table th, #perso_infos table td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#perso_infos table {
+  width: 100%;
+}
+
+/***** AUDIO *****/
+/*#audio_target{
+  top:10px;
+  position:absolute;
+  filter:opacity(0.5);
+}
+#audio_target:hover{
+  filter:opacity(1);
+}*/
+
+/***** picture section *****/
+img{
+   /*width: 100%; */
+    max-width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-height: 500px;
+}
+#picture_target{
+    height: 500px; 
+    text-align: center;
+    background-color: black;
+    width: 100%;
+}
+
+#img_drop, #last_img_drop{
+  height: 100%;
+}
+
+/***** scene section *****/
+#scene_target{
+  min-height: 200px;
+  padding: 20px;
+  margin-top: 3px;
+}
+#scene_target p {
+  line-height: 1.2em;
+}
+/***** choices section *****/
+#choices_target {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+#choices_target label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+#choices_target input {
+  margin-right: 5px;
+}
+
+#account #infos, #persoList, #classement, #dice_roll_div, #combat_infos , #combat_dice_hab div {
+  text-align: center;
+}
+/***** account section *****/
+#account{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#persoListTable, #classement {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#login_form, #register_form, #newPersoForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+#newPersoForm{
+  max-width: 352px;
+}
+#login_form label, #register_form label, #newPersoForm label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#login_form input[type=password]{
+  margin-left: 21px;
+}
+#login_form .btn, #register_form .btn , #newPersoForm .btn {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 145px;
+}
+#register_form input, #newPersoForm input{
+  float: right;
+  clear: both;
+}
+
+/***** dice *****/
+#dice {
+  text-align: center;
+  padding: 20px;
+}
+#dice_btn {
+  padding-top: 5px;
+  padding-bottom: 8px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: black;
+  cursor:pointer;
+}
+
+#dice_btn i {
+  font-size: 2em;
+  color: #ff9800;
+}
+
+/***** combat form *****/
+#combat_hab_form {
+  margin: 0 auto;
+  width: 200px;
+}
+#combat_hab_form div {
+  width: 97px;
+  text-align: center;
+}
+#combat_hab_form input, #combat_hab_form label {
+  display: block;
+}
+#combat_hab_form input {
+  width: 50px;
+  margin: 0 auto;
+}
+#combat_hab_form .btn { 
+  display: block;
+  margin: 10px auto;
+}
+
+#btn_bar {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* credit page */
+#credits_page{
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+#credits_page ul {
+  list-style: none;
+  padding-left: 0;
+}
+#credits_page a{
+  color: #8e8e8e;
+}
+#credits_page a:hover {
+  color: black;
+  transition: all .3s ease 0s;
+  text-decoration: underline;
+}
+
+/*FOOTER*/
+footer {
+  margin-top: 20px;
+  border-top: 1px solid black;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 700px){
+
+  #picture_target{
+   height: 76vw;
+  }
+  #scene_target{
+    border: none;
+  }
+  #sidebar {
+  display: block;
+  }
+  body, html{
+   position:relative;
+   height: 100%;
+  }
+  #overflow {
+  height: 100%;
+  }
+}
+
+@media screen and (max-width: 505px){
+  #perso_infos{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 400px){
+  #nav_bar {
+    padding-left: 0px;
+    padding-bottom: 12px;
+    text-align: center;
+  }
+  #newPersoForm, #register_form, #login_form{
+    max-width: 200px;
+  }
+  #login_form input[type=password]{
+    margin-left: 0px;
+  }
+  #login_form label, #register_form label, #newPersoForm label {
+    text-align: center;
+  }
+  #register_form input, #newPersoForm input{
+    float: none;
+    max-width: 100%;
+  }
+    
+}
+
+@media screen and (max-width: 380px){
+  #nav_bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    background-color: black;
+  }
+  #nav_bar li{
+    width: 100%;
+    text-align: center;
+  }
+  #nav_bar a{
+    display: block;
+  }
+}

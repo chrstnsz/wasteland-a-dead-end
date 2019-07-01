@@ -1,0 +1,132 @@
+<?php require 'php/functions.php'; ?>
+<?php include 'header.php' ?>
+<?php logged_only();
+$user = $_SESSION['auth']->id;
+
+require 'php/db.php';
+
+$req = $pdo->prepare("SELECT
+	personnages.id,
+	users.username,
+	pseudo,
+	hability,
+	endurance,
+	luck
+	FROM personnages
+	INNER JOIN users ON personnages.user_id = users.id
+	WHERE users.id= ? ");
+
+$req->execute([$user]);
+$persoList = $req->fetchAll();
+
+?>
+
+<section id="account">
+<?php if(isset($_SESSION['perso'])) : ?>
+	<div id="sidebar">
+		<button id="sidebutton"><i class="fas fa-angle-double-left"></i></button>
+		<div id="sidebar_infos">
+			<h2>infos</h2>
+			<ul>
+				<li>Pseudo : <?= htmlspecialchars($_SESSION['perso']->pseudo); ?></li>
+				<li>Hability : <?= htmlspecialchars($_SESSION['perso']->hability); ?></li>
+				<li>Endurance : <?= htmlspecialchars($_SESSION['perso']->endurance); ?></li>
+				<li>Chance : <?= htmlspecialchars($_SESSION['perso']->luck); ?></li>
+				<li>First Aid : <?= htmlspecialchars($_SESSION['backpack']->first_aid_kit); ?></li>
+				<li>Credits : <?= htmlspecialchars($_SESSION['backpack']->credits); ?></li>
+				<li>Score : <span id="clicks_count">0</span></li>
+			</ul>
+		</div>
+	</div>
+<?php endif; ?>
+	<div id="infos">
+		<h2>Bonjour <?= htmlspecialchars($_SESSION['auth']->username); ?>.</h2>
+		<p>Sélectionnez ou créez un personnage pour pouvoir débuter l'aventure.</p>
+
+		<button id="searchPerso" class="btn">Voir perso existant</button>
+		<button id="createNewPerso" class="btn">Créer nouveau perso</button>
+	</div>
+
+ 	<?php if(!empty($errors)): ?>
+	<section class="danger">
+		<p>Vous n'avez pas rempli le formulaire correctement</p>
+		<ul>
+		<?php foreach($errors as $error): ?>
+			<li><?= htmlspecialchars($error); ?></li>
+		<?php endforeach; ?>
+		</ul>
+	</section>
+	<?php endif; ?>
+
+	<div id="newPersoSection">
+		<h3>Hability</h3>
+		<p>Lancez <span class="bold">un</span> dé. Ajoutez <span class="bold">6</span> au nombre obtenu et inscrivez le total dans la case <span class="bold">HABILITY</span> ci-dessous. Vos points D'HABILITY mesurent votre <span class="bold">aptitude à la conduite, en mécanique et au combat</span>.</p>
+
+		<h3>Endurance</h3>
+		<p>Lancez <span class="bold">deux</span> dés. Ajoutez <span class="bold">24</span> au chiffre obtenu et inscrivez le total dans la case <span class="bold">ENDURANCE</span> en dessous. Vos points d'ENDURANCE sont le reflet de <span class="bold">votre forme physique</span> et de votre <span class="bold">constitution</span>. Votre total d'ENDURANCE diminuera lorsque vous serez blessé, mais vous aurez à votre disposition une <span class="bold">Trousse de Secours</span> contenant <span class="bold">10 unités de médicaments</span> divers dont vous pourrez vous servir pour vous soigner. Une unité de médicaments redonne <span class="bold">4 points d'ENDURANCE</span>.</p>
+
+		<h3>Chance</h3>
+		<p>Lancez <span class="bold">un</span> dé. Ajoutez <span class="bold">6</span> au chiffre obtenu et inscrivez le total dans la case <span class="bold">CHANCE</span> en dessous. Vos points de CHANCE indiquent si vous êtes naturellement <span class="bold">favorisé par le sort</span>, ou non.</p>
+		<p>Vous aurez la possibilité de faire appel à votre chance pour essayer de rendre une issue plus favorable.</p>
+		<p>Cette règle s'intitule : <span class="italic bold">Tentez votre Chance</span>. Chaque fois que vous <span class="italic bold">Tenterez votre Chance</span>, <span class="bold">1 point sera retiré</span> à votre total de <span class="bold">CHANCE</span>. Ainsi, vous vous rendre bienôt compte que <span class="bold">plus vous vous fierez à votre chance, plus vous courrez de risques.</span></p>
+
+		<div id="dice">
+			<button id="dice_btn" class="bounceIn" type="button" class="rollTheDice"><i class="fas fa-dice"></i></button>
+			<p class="dice_result">Roll me !</p>	
+		</div>
+
+		<form id="newPersoForm" method="POST" action="newPerso.php">
+			<label>Pseudo (12 car. max) :<input id="pseudo" type="text" name="pseudo" maxlength="12"></label>
+			<label>Hability :<input id="hability" type="number" name="hability"></label>
+			<label>Endurance :<input id="endurance" type="number" name="endurance"></label>
+			<label>Chance :<input id="luck" type="number" name="luck"></label>
+
+			<button id="savePerso" type="submit" class="btn">Save</button>
+		</form>
+	</div>
+	<div id="persoList">
+		<?php if(empty($persoList)): ?>
+			<p>Vous n'avez pas de personnage !</p>
+		<?php else: ?>
+		<p>Choisissez un personnage en cliquant sur le pseudo.</p>
+		<table id="persoListTable">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Hab</th>
+					<th>Endu</th>
+					<th>Luck</th>
+					<th><i class="fas fa-trash-alt"></i></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php foreach($persoList as $perso): ?>
+			<tr>
+				<td><a class="remove_disabled" href="php/selectPerso.php?id=<?= intval($perso->id); ?>"><?= htmlspecialchars($perso->pseudo); ?></a></td>
+				<td><?= htmlspecialchars($perso->hability); ?></td>
+				<td><?= htmlspecialchars($perso->endurance); ?></td>
+				<td><?= htmlspecialchars($perso->luck); ?></td>
+				<td><a href="php/deletePerso.php?id=<?=intval($perso->id)?>"><i class="fas fa-times"></i></a></td>
+			</tr>
+			<?php endforeach; ?>
+
+			</tbody>
+		</table>
+		<?php endif; ?>
+	</div>
+			
+
+	<form id="choices_target" method="POST" name="choices_target" class="hidden">
+	</form>
+
+	<div id="skip_intro_target">
+	</div>
+
+	<div id="btn_bar" class="btn_bar">
+	<?php if(isset($_SESSION['perso'])) : ?>
+		<button class="btn" name="start_intro" id="start_intro">Start Game</button>
+	<?php endif; ?>
+	</div>
+
+</section>
+<?php include 'footer.php' ?>
