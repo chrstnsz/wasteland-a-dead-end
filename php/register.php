@@ -7,7 +7,7 @@ if(!empty($_POST)){
 
 	$errors = array();
 
-	require_once 'php/db.php';
+	require_once 'db.php';
 
 	if(empty($_POST['username']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['username'])){
 		$errors['username'] = "Votre pseudo n'est pas valide.";
@@ -70,35 +70,6 @@ if(!empty($_POST)){
 	}
 }
 
- include 'header.php'
-?>
-	<h2>Inscription</h2>
+$template = 'register';
 
-<?php if(!empty($errors)): ?>
-	<section class="danger">
-	<p>Vous n'avez pas rempli le formulaire correctement</p>
-	<ul>
-	<?php foreach($errors as $error): ?>
-		<li><?= $error; ?></li>
-	<?php endforeach; ?>
-	</ul>
-	</section>	
-<?php endif; ?>
-
-	<form id="register_form" action="register.php" method="POST">
-		<label>Pseudo :
-		<input type="text" name="username" autocomplete="username" /></label>
-
-		<label>Email :
-		<input type="email" name="email" autocomplete="username"/></label>
-
-		<label>Mot de  Passe :
-		<input type="password" name="password" autocomplete="new-password"/></label>
-
-		<label>Confirmation mot de passe :
-		<input type="password" name="password_confirm" autocomplete="new-password"/></label>
-
-		<button class="btn" type="submit">M'inscrire</button>
-	</form>
-
-<?php include 'footer.php' ?>
+include '../view/layout.phtml';

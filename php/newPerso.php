@@ -4,7 +4,7 @@ if(!empty($_POST)){
 	if(session_status() == PHP_SESSION_NONE){
 	session_start();
 	}
-	require_once 'php/db.php';	
+	require_once 'db.php';	
 
 	$errors = array();
 

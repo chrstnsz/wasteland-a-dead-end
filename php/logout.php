@@ -8,4 +8,4 @@ unset($_SESSION['backpack']);
 
 $_SESSION['flash']['success'] = "Vous êtes maintenant déconnecté(e).";
 
-header('Location: ../index.php');
+header('Location: index.php');

@@ -11,10 +11,10 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 	$req = $pdo->prepare("DELETE FROM personnages WHERE id = ?");
 	$req->execute([$perso_id]);
 	unset($_SESSION['perso']);
-	header('Location: ../index.php');
+	header('Location: index.php');
 	exit();
 
 }else{
-	header('Location: ../index.php');
+	header('Location: index.php');
 	exit();
 }

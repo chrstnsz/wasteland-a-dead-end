@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteRule index.php php/index.php
+RewriteRule logout.php php/logout.php
+RewriteRule scoreList.php php/scoreList.php
+RewriteRule register.php php/register.php
+RewriteRule credits.php php/credits.php
+RewriteRule faq.php php/faq.php
+RewriteRule account.php php/account.php
+RewriteRule login.php php/login.php
+RewriteRule selectPerso.php php/selectPerso.php
+RewriteRule newPerso.php php/newPerso.php
+RewriteRule deletePerso.php php/deletePerso.php

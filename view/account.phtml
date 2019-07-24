@@ -1,26 +1,3 @@
-<?php require 'php/functions.php'; ?>
-<?php include 'header.php' ?>
-<?php logged_only();
-$user = $_SESSION['auth']->id;
-
-require 'php/db.php';
-
-$req = $pdo->prepare("SELECT
-	personnages.id,
-	users.username,
-	pseudo,
-	hability,
-	endurance,
-	luck
-	FROM personnages
-	INNER JOIN users ON personnages.user_id = users.id
-	WHERE users.id= ? ");
-
-$req->execute([$user]);
-$persoList = $req->fetchAll();
-
-?>
-
 <section id="account">
 <?php if(isset($_SESSION['perso'])) : ?>
 	<div id="sidebar">
@@ -102,11 +79,11 @@ $persoList = $req->fetchAll();
 			<tbody>
 			<?php foreach($persoList as $perso): ?>
 			<tr>
-				<td><a class="remove_disabled" href="php/selectPerso.php?id=<?= intval($perso->id); ?>"><?= htmlspecialchars($perso->pseudo); ?></a></td>
+				<td><a class="remove_disabled" href="selectPerso.php?id=<?= intval($perso->id); ?>"><?= htmlspecialchars($perso->pseudo); ?></a></td>
 				<td><?= htmlspecialchars($perso->hability); ?></td>
 				<td><?= htmlspecialchars($perso->endurance); ?></td>
 				<td><?= htmlspecialchars($perso->luck); ?></td>
-				<td><a href="php/deletePerso.php?id=<?=intval($perso->id)?>"><i class="fas fa-times"></i></a></td>
+				<td><a href="deletePerso.php?id=<?=intval($perso->id)?>"><i class="fas fa-times"></i></a></td>
 			</tr>
 			<?php endforeach; ?>
 
@@ -129,4 +106,4 @@ $persoList = $req->fetchAll();
 	</div>
 
 </section>
-<?php include 'footer.php' ?>
+

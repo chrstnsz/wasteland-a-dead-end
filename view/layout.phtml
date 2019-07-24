@@ -10,11 +10,14 @@ if (isset($_SESSION['LAST_ACTIVITY']) && ((time() - $_SESSION['LAST_ACTIVITY']) 
 
 $_SESSION['LAST_ACTIVITY'] = time();
 
+
+var_dump($_SESSION);
+
 ?>
 <!doctype html>
 <html lang="fr">
 <head>
-<title>Wasteland, a Dead End</title>
+	<title>Wasteland, a Dead End</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,21 +26,20 @@ $_SESSION['LAST_ACTIVITY'] = time();
 	<link href="https://fonts.googleapis.com/css?family=Share&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<link rel="icon" type="image/png" href="favicon.png"/>
-	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="js/game_utilities.js"></script>
-	<script src="js/website_utilities.js"></script>
-	<script src="js/scenes.js"></script>
-	<script src="js/intro.js"></script>
+	<script src="./js/game_utilities.js"></script>
+	<script src="./js/website_utilities.js"></script>
+	<script src="./js/scenes.js"></script>
+	<script src="./js/intro.js"></script>
 </head>
 <body>
 <div id="overflow">
 <main class="container">
-
 	<section id="picture_target">
-		<img src="img/wasteland.jpg" alt="wasteland">
+		<img src="./img/wasteland.jpg" alt="wasteland">
 	</section>
 <?php if(isset($_SESSION['perso'])) : ?>
 <section id="perso_infos">
@@ -72,15 +74,15 @@ $_SESSION['LAST_ACTIVITY'] = time();
 	</section>
 	<ul id="nav_bar">
 		<?php if(isset($_SESSION['auth'])): ?>
-			<li><a class="nava_style" href="php/logout.php">Logout</a></li>
-			<li><a class="nava_style" href="scoreList.php#scoreList">Classement</a></li>
+			<li><a class="nava_style" href="logout.php">Logout</a></li>
+			<li><a class="nava_style" href="scoreList.php">Classement</a></li>
 			<li><a class="nava_style" href="index.php">Accueil</a></li>
 		<?php else: ?>
-			<li><a class="nava_style" href="register.php#register_form">Create new account</a></li>
-			<li><a class="nava_style" href="login.php#login_form">Login</a></li>
+			<li><a class="nava_style" href="register.php">Create new account</a></li>
+			<li><a class="nava_style" href="login.php">Login</a></li>
 		<?php endif ?>
-		<li><a class="nava_style" href="credits.php#credits_page">Credits</a></li>
-		<li><a class="nava_style" href="faq.php#faq">FAQ</a></li>
+		<li><a class="nava_style" href="credits.php">Credits</a></li>
+		<li><a class="nava_style" href="faq.php">FAQ</a></li>
 	</ul>
 	<div style="position: absolute; left: 50%;">
 	<?php if(isset($_SESSION['flash'])): ?>
@@ -92,4 +94,15 @@ $_SESSION['LAST_ACTIVITY'] = time();
 		<?php unset($_SESSION['flash']); ?>
 	<?php endif; ?>
 	</div>
+	<?php include $template.'.phtml' ?>
+</main>
+<footer>
+	<small>
+		<p>From the book "Freeway Fighter" of Ian Livingstone. Made by <a class="nava_style" href="https://christiansaez.fr" target="_blank" rel="noopener">Christian Saez</a></p>
+	</small>
+</footer>
 
+<script src="./js/main.js"></script>
+</div>
+</body>	
+</html>

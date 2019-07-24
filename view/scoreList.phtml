@@ -1,11 +1,3 @@
-<?php include 'header.php'; 
-
- require 'php/db.php';
-
-$req = $pdo->prepare("SELECT username, scoreMax FROM users");
-$req->execute();
-$userList = $req->fetchAll();
-?>
 <section id="scoreList">
 	<table id="classement">
 		<thead>
@@ -26,5 +18,3 @@ $userList = $req->fetchAll();
 		</tbody>
 	</table>
 </section>
-
-<?php include 'footer.php';
