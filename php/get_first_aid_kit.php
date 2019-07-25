@@ -22,6 +22,6 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 	echo "Vous avez regagné 4 points d'endurance. Une unité de Trousse de Secours a été retiré.";
 
 } else {
-	header('Location: index.php');
+	header('Location: .././');
 	exit();
 }

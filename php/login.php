@@ -19,6 +19,9 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) {
 		if(password_verify($_POST['password'], $user->password)){
 			$_SESSION['auth'] = $user;
 			$_SESSION['flash']['success'] = "Vous êtes maintenant connecté.";
+
+			$_SESSION['LAST_ACTIVITY'] = time();
+			
 			header('Location: account.php');
 			exit();
 		}else{

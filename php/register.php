@@ -3,6 +3,11 @@ if(session_status() == PHP_SESSION_NONE){
 	session_start();
 }
 
+if(isset($_SESSION['auth'])){
+	header('Location: index.php');
+	exit();
+}
+
 if(!empty($_POST)){
 
 	$errors = array();

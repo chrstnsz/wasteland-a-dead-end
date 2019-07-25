@@ -16,5 +16,5 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 	echo htmlspecialchars($count->score);
 
 } else {
-	header('Location: index.php');
+	header('Location: .././');
 }

@@ -82,7 +82,7 @@ if($_POST && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['H
 	echo $result;
 
 }else{
-	header('Location: ../index.php');
+	header('Location: .././');
 	exit();
 }
 
